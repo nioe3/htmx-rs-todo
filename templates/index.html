@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap:10px;
+        height: 100vh;
+    }
+
+
+    button {
+        width: 20%;
+        margin: 2px;
+    }
+
+    button:hover {
+        cursor: pointer;
+        border: 2px solid #000000;
+        margin: 0;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 50%;
+
+    }
+
+    .complete {
+        background-color: mediumseagreen;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 5px;
+    }
+
+
+    li{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    form {
+        display: flex;
+        width: 50%;
+        justify-content: space-between;
+
+        button {
+            padding: 5px;
+            border: none;
+            border-radius: 10px;
+            background-color: #007bff;
+            color: white;
+        }
+
+        input {
+            padding: 5px;
+            border: 1px solid #adadad;
+            border-radius: 10px;
+            width: 80%;
+        }
+    }
+
+
+</style>
+<body>
+
+
+<form id="todo-form" hx-post="/todo" hx-target="#todos"  hx-swap="outerHtml"
+      onsubmit="setTimeout(() => {
+        this.reset();
+      }, 1);"
+>
+    <input type="text" required="true" name="text" placeholder="Todo"/>
+    <button type="submit">Add</button>
+</form>
+<ul id="todos" hx-get="/todo" hx-trigger="load" hx-swap="innerHtml">
+
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+
+{% for todo in todos %}
+<li>
+    <span>{{ todo.text }}</span>
+    <button hx-delete="/todo/{{todo.id}}" hx-target="#todos" class="complete">COMPLETE</button>
+</li>
+{% endfor %}
