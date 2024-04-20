@@ -4,7 +4,6 @@ use serde::{Deserialize, Serialize};
 pub struct Todo {
     pub id: usize,
     pub text: String,
-    pub completed: bool,
 }
 
 #[derive(Deserialize)]

@@ -65,7 +65,6 @@ pub async fn create_todo(
     todos.push(Todo {
         id: id as usize,
         text: form.text.clone(),
-        completed: false,
     });
 
     let file = std::fs::OpenOptions::new()
